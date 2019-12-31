@@ -20,6 +20,7 @@ class Boggle:
         self.n = n
         self.boggle_arr = np.reshape([c for c in boggle_string],(n,n))
         self.neighbors = {}
+        self.boggle_words = []
         # Get neighbours
         for i in range(n):
             for j in range(n):
@@ -37,7 +38,7 @@ class Boggle:
         to_visit = [x for x in self.neighbors[i,j] if x not in visited]
         # print("For ({0},{1}) I'll visit {2}".format(i,j,to_visit))
         if word != '' and str(word+self.boggle_arr[i][j]) in dictionary:
-            print('Found word: {0}'.format(word+self.boggle_arr[i][j]))
+            self.boggle_words.append(str(word+self.boggle_arr[i][j]))
         word = str(word+self.boggle_arr[i][j])
         visited.append((i,j))
         # Check if we need to stop - (this is not optimal - still checking unecessary things)
@@ -54,6 +55,10 @@ class Boggle:
         for i in range(self.n):
             for j in range(self.n):
                 self.word_search(i,j,[],'')
+        self.boggle_words = list(set(self.boggle_words))
+        self.boggle_words.sort(key=len)
+        for word in self.boggle_words:
+            print(word)
 
 
 # cat new_words.xml | grep "class=\"word\"" | cut -d'>' -f2 | cut -d'<' -f1 | sort -u | awk {'print toupper($_)'}
