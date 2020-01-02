@@ -10,7 +10,6 @@ def read_boggle(boggle, n=4):
     if len(boggle) != n*n:
         print("No {0}x{0} boggle can be created".format(n))
 
-
 # Represents the full boggle puzzle
 # boggle_string is the letters as a single string (left to right, top to bottom)
 # n is the size of the boggle (n x n)
@@ -21,7 +20,7 @@ class Boggle:
         self.boggle_arr = np.reshape([c for c in boggle_string],(n,n))
         self.neighbors = {}
         self.boggle_words = []
-        # Get neighbours
+        # Create the neighbours lists
         for i in range(n):
             for j in range(n):
                 cur_neighbors = []
@@ -59,6 +58,5 @@ class Boggle:
         self.boggle_words.sort(key=len)
         for word in self.boggle_words:
             print(word)
-
 
 # cat new_words.xml | grep "class=\"word\"" | cut -d'>' -f2 | cut -d'<' -f1 | sort -u | awk {'print toupper($_)'}
