@@ -4,3 +4,4 @@ app*
 backup
 new_words.xml
 notes
+.vscode/*
