@@ -12,7 +12,7 @@ class Boggle:
     def __init__(self,boggle_string,n):
         print("Hello from Boggle constructor")
         self.n = n
-        self.boggle_arr = np.reshape([c for c in boggle_string],(n,n))
+        self.boggle_arr = np.reshape([c for c in boggle_string.upper()],(n,n))
         self.neighbors = {}
         self.boggle_words = []
         # Create the neighbours lists
