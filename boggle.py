@@ -1,8 +1,9 @@
+#!/usr/bin/python3
 import numpy as np
 import argparse
 
 # read the dictionary and strip potential whitespace
-with open('gr_dict') as f:
+with open('dictionary') as f:
     dictionary = f.readlines()
 
 dictionary = [x.strip() for x in dictionary]
